@@ -18,15 +18,6 @@ echo -e "   GitHub: ${GITHUB_USER}/${REPO_NAME}"
 echo -e "   Target: ${DOTFILES_DIR}"
 echo ""
 
-# Function to create backup
-backup_file() {
-    local file=$1
-    if [ -e "$file" ]; then
-        local backup_name="${file}.backup.$(date +%Y%m%d_%H%M%S)"
-        echo -e "${YELLOW}⚠️  Backing up existing $file to $backup_name${NC}"
-        mv "$file" "$backup_name"
-    fi
-}
 
 # Function to download file
 download_file() {
@@ -61,7 +52,8 @@ if [ -d "$DOTFILES_DIR/.git" ]; then
 else
     echo -e "${BLUE}📂 Cloning dotfiles repository...${NC}"
     if [ -d "$DOTFILES_DIR" ]; then
-        backup_file "$DOTFILES_DIR"
+        echo -e "${YELLOW}⚠️  Removing existing $DOTFILES_DIR${NC}"
+        rm -rf "$DOTFILES_DIR"
     fi
     git clone "https://github.com/${GITHUB_USER}/${REPO_NAME}.git" "$DOTFILES_DIR"
 fi
@@ -81,7 +73,7 @@ create_symlink() {
     
     # Remove existing file/link if it exists
     if [ -e "$target" ] || [ -L "$target" ]; then
-        backup_file "$target"
+        rm -f "$target"
     fi
     
     # Create symbolic link
