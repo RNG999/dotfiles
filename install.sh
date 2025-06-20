@@ -103,5 +103,3 @@ fi
 echo ""
 echo -e "${GREEN}✨ Installation complete!${NC}"
 echo ""
-echo "To update your configuration later, run:"
-echo -e "  ${BLUE}curl -fsSL https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/${BRANCH}/install.sh | bash${NC}"
