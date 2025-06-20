@@ -66,8 +66,8 @@ echo -e "${BLUE}📋 Installing Claude configuration...${NC}"
 mkdir -p "$HOME/.claude"
 mkdir -p "$HOME/.claude/commands"
 
-# Function to create symbolic link
-create_symlink() {
+# Function to copy file
+copy_file() {
     local source=$1
     local target=$2
     
@@ -76,24 +76,24 @@ create_symlink() {
         rm -f "$target"
     fi
     
-    # Create symbolic link
-    ln -s "$source" "$target"
-    echo -e "${GREEN}✓ Linked $(basename "$target")${NC}"
+    # Copy file
+    cp "$source" "$target"
+    echo -e "${GREEN}✓ Copied $(basename "$target")${NC}"
 }
 
-# Link CLAUDE.md
+# Copy CLAUDE.md
 if [ -f "$DOTFILES_DIR/.claude/CLAUDE.md" ]; then
-    create_symlink "$DOTFILES_DIR/.claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+    copy_file "$DOTFILES_DIR/.claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
 else
     echo -e "${YELLOW}⚠️  CLAUDE.md not found in repository${NC}"
 fi
 
-# Link command files
+# Copy command files
 if [ -d "$DOTFILES_DIR/.claude/commands" ]; then
     for cmd_file in "$DOTFILES_DIR/.claude/commands"/*.md; do
         if [ -f "$cmd_file" ]; then
             filename=$(basename "$cmd_file")
-            create_symlink "$cmd_file" "$HOME/.claude/commands/$filename"
+            copy_file "$cmd_file" "$HOME/.claude/commands/$filename"
         fi
     done
 else
