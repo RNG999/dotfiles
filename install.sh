@@ -65,6 +65,7 @@ echo -e "${BLUE}📋 Installing Claude configuration...${NC}"
 # Create ~/.claude directory if it doesn't exist
 mkdir -p "$HOME/.claude"
 mkdir -p "$HOME/.claude/commands"
+mkdir -p "$HOME/.claude/agents"
 
 # Function to copy file
 copy_file() {
@@ -98,6 +99,18 @@ if [ -d "$DOTFILES_DIR/.claude/commands" ]; then
     done
 else
     echo -e "${YELLOW}⚠️  No commands directory found in repository${NC}"
+fi
+
+# Copy agent files
+if [ -d "$DOTFILES_DIR/.claude/agents" ]; then
+    for agent_file in "$DOTFILES_DIR/.claude/agents"/*.md; do
+        if [ -f "$agent_file" ]; then
+            filename=$(basename "$agent_file")
+            copy_file "$agent_file" "$HOME/.claude/agents/$filename"
+        fi
+    done
+else
+    echo -e "${YELLOW}⚠️  No agents directory found in repository${NC}"
 fi
 
 echo ""
