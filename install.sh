@@ -113,6 +113,13 @@ else
     echo -e "${YELLOW}⚠️  No agents directory found in repository${NC}"
 fi
 
+# Copy settings.json
+if [ -f "$DOTFILES_DIR/.claude/settings.json" ]; then
+    copy_file "$DOTFILES_DIR/.claude/settings.json" "$HOME/.claude/settings.json"
+else
+    echo -e "${YELLOW}⚠️  settings.json not found in repository${NC}"
+fi
+
 echo ""
 echo -e "${GREEN}✨ Installation complete!${NC}"
 echo ""
