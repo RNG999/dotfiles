@@ -53,6 +53,7 @@ keybinds clear-defaults=true {
         bind "esc" { UndoRenamePane; SwitchToMode "normal"; }
     }
     tmux {
+        bind "esc" "enter" "Ctrl c" { SwitchToMode "normal"; }
         bind "-" { NewPane "down"; SwitchToMode "normal"; }
         bind "h" { MoveFocus "left"; SwitchToMode "normal"; }
         bind "Ctrl h" { Resize "Increase left"; }
@@ -66,7 +67,7 @@ keybinds clear-defaults=true {
         bind "|" { NewPane "right"; SwitchToMode "normal"; }
     }
     tab {
-        bind "Ctrl t" "esc" "enter" { SwitchToMode "normal"; }
+        bind "esc" "enter" "Ctrl c" { SwitchToMode "normal"; }
         bind "n" { NewTab; SwitchToMode "normal"; }
         bind "x" { CloseTab; SwitchToMode "normal"; }
         bind "h" "left" { GoToPreviousTab; }
@@ -82,6 +83,7 @@ keybinds clear-defaults=true {
         bind "9" { GoToTab 9; SwitchToMode "normal"; }
     }
 }
+
 plugins {
     about location="zellij:about"
     compact-bar location="zellij:compact-bar"
@@ -98,9 +100,12 @@ plugins {
         welcome_screen false
     }
 }
+
 load_plugins {
     zellij:link
 }
 web_client {
     font "monospace"
 }
+
+show_startup_tips false
