@@ -1,0 +1,47 @@
+shell-integration = bash
+
+# ==========================================
+# Tab Mode
+# ==========================================
+keybind = ctrl+t>n=new_tab
+keybind = ctrl+t>x=close_surface
+keybind = ctrl+t>h=previous_tab
+keybind = ctrl+t>left=previous_tab
+keybind = ctrl+t>l=next_tab
+keybind = ctrl+t>right=next_tab
+keybind = ctrl+t>1=goto_tab:1
+keybind = ctrl+t>2=goto_tab:2
+keybind = ctrl+t>3=goto_tab:3
+keybind = ctrl+t>4=goto_tab:4
+keybind = ctrl+t>5=goto_tab:5
+keybind = ctrl+t>6=goto_tab:6
+keybind = ctrl+t>7=goto_tab:7
+keybind = ctrl+t>8=goto_tab:8
+keybind = ctrl+t>9=goto_tab:9
+
+# ==========================================
+# Tmux Mode
+# ==========================================
+keybind = ctrl+j>-=new_split:down
+keybind = ctrl+j>v=new_split:right
+keybind = ctrl+j>h=goto_split:left
+keybind = ctrl+j>j=goto_split:down
+keybind = ctrl+j>k=goto_split:up
+keybind = ctrl+j>l=goto_split:right
+keybind = ctrl+j>o=goto_split:next
+
+# ペインのリサイズ
+keybind = ctrl+j>ctrl+h=resize_split:left,20
+keybind = ctrl+j>ctrl+j=resize_split:down,20
+keybind = ctrl+j>ctrl+k=resize_split:up,20
+keybind = ctrl+j>ctrl+l=resize_split:right,20
+
+# ==========================================
+# Scroll & Search
+# ==========================================
+keybind = ctrl+shift+d=scroll_page_fractional:0.5
+keybind = ctrl+shift+u=scroll_page_fractional:-0.5
+keybind = ctrl+shift+page_down=scroll_page_down
+keybind = ctrl+shift+page_up=scroll_page_up
+keybind = ctrl+shift+g=scroll_to_bottom
+keybind = ctrl+shift+t=scroll_to_top
