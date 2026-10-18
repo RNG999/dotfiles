@@ -1,0 +1,23 @@
+# hanare host configuration (see ~/.local/src/hanare/examples/hanare.toml)
+
+[guest]
+flake = "~/.config/hanare/guest"
+
+[vm]
+cpus = 2
+memory = "4G"
+disk_size = "20G"
+vsock_cid = 4242
+
+[[share]]
+path = "~/Work"
+
+[[share]]
+path = "~/Projects"
+
+[commands]
+expose = []
+
+[network]
+# true: allow the guest to reach LAN, Tailscale (CGNAT) and link-local addresses.
+allow_lan = false

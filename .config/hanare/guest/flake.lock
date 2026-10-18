@@ -1,0 +1,49 @@
+{
+  "nodes": {
+    "hanare": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1792314045,
+        "narHash": "sha256-li6uBJTOl5jsx7DK4a1ur1Q1M8EygIyrrwQ4GC4X9fo=",
+        "owner": "RNG999",
+        "repo": "hanare",
+        "rev": "3f916b57a89b9a8f68a49eb280d9b0eb9a41fa5e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "RNG999",
+        "repo": "hanare",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1792030654,
+        "narHash": "sha256-OaQwAtPMTjQiY2sT/2/62UbSPhzP/0aDnWzMm/NCiUw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "26f4107e47e3ad0ffd0db220469ba83b6f6d96e8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-26.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "hanare": "hanare",
+        "nixpkgs": [
+          "hanare",
+          "nixpkgs"
+        ]
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
