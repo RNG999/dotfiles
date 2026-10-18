@@ -17,6 +17,8 @@ path = "~/Projects"
 
 [commands]
 expose = []
+# Always run these without network (like "hanare run --offline").
+offline = ["z3", "cvc5", "tlc", "alloy6", "spin", "NuSMV", "cbmc", "lean", "coqc", "why3", "dafny"]
 
 [network]
 # true: allow the guest to reach LAN, Tailscale (CGNAT) and link-local addresses.
