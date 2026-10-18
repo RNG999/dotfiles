@@ -1,19 +1,22 @@
 # hanare guests (see ~/.local/src/hanare/examples/hanare.toml)
+version = 1
+default_guest = "dev"
 
-# Guest used when no NAME / -g / $HANARE_GUEST is given.
-default = "dev"
+[policy]
+# "hanare share add" outside these asks for confirmation.
+share_roots = ["~/Work", "~/Projects"]
 
 [guests.dev]
+description = "formal methods tools"
 flake = "~/.config/hanare/guest"   # nixosConfigurations.<attr> in this flake is the guest OS
 attr = "hanare"
 cpus = 2
 memory = "4G"
-disk_size = "20G"
-# true: let the guest reach LAN, Tailscale (CGNAT) and link-local addresses.
-allow_lan = false
-# ~/.local/bin links that run these commands in this guest ("hanare link sync").
-expose = []
-# Commands that always run without network (like "hanare run --offline").
+network = "filtered"               # none | filtered (internet only) | lan
+
+[guests.dev.commands]
+link = []
+# Always run without network.
 offline = ["z3", "cvc5", "tlc", "alloy6", "spin", "NuSMV", "cbmc", "lean", "coqc", "why3", "dafny"]
 
 [[guests.dev.share]]
@@ -21,4 +24,3 @@ path = "~/Work"
 
 [[guests.dev.share]]
 path = "~/Projects"
-
