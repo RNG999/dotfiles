@@ -1,25 +1,24 @@
-# hanare host configuration (see ~/.local/src/hanare/examples/hanare.toml)
+# hanare guests (see ~/.local/src/hanare/examples/hanare.toml)
 
-[guest]
-flake = "~/.config/hanare/guest"
+# Guest used when no NAME / -g / $HANARE_GUEST is given.
+default = "dev"
 
-[vm]
+[guests.dev]
+flake = "~/.config/hanare/guest"   # nixosConfigurations.<attr> in this flake is the guest OS
+attr = "hanare"
 cpus = 2
 memory = "4G"
 disk_size = "20G"
-vsock_cid = 4242
-
-[[share]]
-path = "~/Work"
-
-[[share]]
-path = "~/Projects"
-
-[commands]
+# true: let the guest reach LAN, Tailscale (CGNAT) and link-local addresses.
+allow_lan = false
+# ~/.local/bin links that run these commands in this guest ("hanare link sync").
 expose = []
-# Always run these without network (like "hanare run --offline").
+# Commands that always run without network (like "hanare run --offline").
 offline = ["z3", "cvc5", "tlc", "alloy6", "spin", "NuSMV", "cbmc", "lean", "coqc", "why3", "dafny"]
 
-[network]
-# true: allow the guest to reach LAN, Tailscale (CGNAT) and link-local addresses.
-allow_lan = false
+[[guests.dev.share]]
+path = "~/Work"
+
+[[guests.dev.share]]
+path = "~/Projects"
+
